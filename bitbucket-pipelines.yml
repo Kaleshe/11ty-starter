@@ -1,0 +1,30 @@
+# Installation ---
+# 1. In Bitbucket, add $FTP_USERNAME $FTP_PASSWORD and $FTP_HOST as environment variables.
+# 2. Commit this file to your repo
+# 3. From Bitbucket Cloud > Commits > Commit Number > Run Pipeline > Custom:Init (this will
+#    push everything and initial GitFTP)
+#
+# Usage ---
+# - On each commit to master branch, it'll push all files to the $FTP_HOST
+# - You also have the option to 'init' (from Bitbucket Cloud) - pushes everything and initialises
+# - Finally you can also 'deploy-all' (from Bitbucket Cloud) - if multiple deploys fail, you
+#   can deploy everything to "catch up"
+#
+image: node:latest
+
+pipelines:
+    branches:
+        master:
+            - step:
+                caches:
+                    - node
+                script:
+                    - npm ci
+                    - npm run build
+                    - pipe: atlassian/ftp-deploy:0.3.0
+                      variables:
+                        USER: '$FTP_USERNAME'
+                        PASSWORD: '$FTP_PASSWORD'
+                        SERVER: '$FTP_HOST'
+                        REMOTE_PATH: '$FTP_DIR'
+                        LOCAL_PATH: '$BUILD_DIR'
