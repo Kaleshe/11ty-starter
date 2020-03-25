@@ -1,0 +1,10 @@
+{
+    "name": "Your Website Name",
+    "url": "Your Website URL",
+    "stylesheets": [
+        "/assets/css/style.css"
+    ],
+    "scripts": [
+        "/assets/js/script.js"
+    ]
+}
