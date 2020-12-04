@@ -11,7 +11,11 @@
     "type": "git",
     "url": "git+https://github.com/Kaleshe/11ty-starter.git"
   },
-  "keywords": ["11ty", "starter", "basic"],
+  "keywords": [
+    "11ty",
+    "starter",
+    "basic"
+  ],
   "author": "Kaleshe",
   "license": "ISC",
   "bugs": {
@@ -19,6 +23,7 @@
   },
   "homepage": "https://github.com/Kaleshe/11ty-starter#readme",
   "dependencies": {
+    "browser-sync": "^2.26.13",
     "gulp": "^4.0.2",
     "gulp-sass": "^4.1.0",
     "node-sass": "^4.14.1"
